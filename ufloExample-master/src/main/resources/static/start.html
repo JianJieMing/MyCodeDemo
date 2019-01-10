@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>开启业务流程页面</title>
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
+<body>
+<div>
+    <span>
+        <label>名称:</label>
+    </span>
+    <span>
+        <input type="text" id="name" style="width: 200px;height: 25px">
+    </span>
+    <br>
+    <span>
+        <label>描述:</label>
+    </span>
+    <span>
+        <input type="text" id="desc" style="width: 200px;height: 25px">
+    </span>
+    <br>
+    <button type="button" onclick="login()">完成初审</button>
+
+</div>
+
+<script>
+    function login() {
+        var name = $("#name").val();
+        var desc = $("#desc").val();
+        $.ajax({
+            url: 'startProcess',
+            method: 'post',
+            data: {"name": name, "desc": desc},
+            success: function () {
+                alert("开启成功!");
+                window.open("uflo/todo");
+            },
+            error: function () {
+                alert("开启失败!")
+            }
+        })
+    }
+</script>
+
+</body>
+</html>

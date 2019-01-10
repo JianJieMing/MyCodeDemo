@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>初审</title>
+</head>
+<body>
+<div>
+    <span>
+        <label>用户名:</label>
+    </span>
+    <span>
+        <input type="text" id="username" style="width: 200px;height: 25px">
+    </span>
+    <br>
+    <span>
+        <label>密&emsp;码:</label>
+    </span>
+    <span>
+        <input type="password" id="password" style="width: 200px;height: 25px">
+    </span>
+    <br>
+    <button type="button" onclick="login()">登录</button>
+
+</div>
+
+<script>
+    function login() {
+        var username = $("#username").val();
+        var password = $("#password").val();
+        if (username == "" || password == "") {
+            alert("请输入用户名和密码!");
+            return;
+        }
+        $.ajax({
+            url: 'login',
+            method: 'post',
+            data: {"username": username, "password": password},
+            success: function () {
+                alert("登录成功!");
+                window.open("uflo/todo");
+            },
+            error: function () {
+                alert("登录失败!")
+            }
+        })
+    }
+</script>
+</body>
+</html>
