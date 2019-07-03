@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body>
+
+<div id="app">
+    <input type="text" v-model="message">&nbsp;&nbsp; Input 内容: {{message}}
+    <br>
+    下拉框：
+    <select v-model="selected">
+        <option disabled value="">请选择</option>
+        <option>A</option>
+        <option>B</option>
+        <option>C</option>
+    </select>
+    <span>选中的值: {{ selected }}</span>
+
+    <!--多复选框：-->
+    <!--<input type="checkbox" id="jack" value="Jack" v-model="checkedNames">-->
+    <!--<label for="jack">Jack</label>-->
+    <!--<input type="checkbox" id="john" value="John" v-model="checkedNames">-->
+    <!--<label for="john">John</label>-->
+    <!--<input type="checkbox" id="mike" value="Mike" v-model="checkedNames">-->
+    <!--<label for="mike">Mike</label>-->
+    <!--<span>选中的值: {{ checkedNames }}</span>-->
+</div>
+
+<script type="text/javascript">
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            message: 'Hello Vue',
+            checkedNames: [],
+            selected: ""
+        }
+    })
+</script>
+
+</body>
+</html>

@@ -41,6 +41,8 @@
         <property name="dataSource" ref="dataSource" />
         <property name="packagesToScan">
             <list>
+                <value>com.bstek.uflo.model</value>
+                <value>poc.model</value>
                 <value>com.eshare.uflo.example</value>
             </list>
         </property>
