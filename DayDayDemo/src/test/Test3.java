@@ -10,8 +10,8 @@ import java.time.format.DateTimeFormatter;
  * @Date 2019/8/6 12:09
  * @Created by jianjieming
  */
-public class Test3 {
-    public static void main(String[] args) {
-        System.out.println(Runtime.getRuntime().availableProcessors());
-    }
+public enum Test3 {
+
+    ProcessInspectionPicYSBW,
+
 }

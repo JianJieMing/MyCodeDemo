@@ -6,4 +6,8 @@ package singleton.单例五种写法;
  * @Created by jianjieming
  */
 public class Test {
+    public static void main(String[] args) {
+        int a = 32;
+        System.out.println(a << 1);
+    }
 }
