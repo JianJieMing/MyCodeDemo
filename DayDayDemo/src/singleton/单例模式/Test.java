@@ -1,4 +1,4 @@
-package singleton.单例五种写法;
+package singleton.单例模式;
 
 /**
  * @Classname test.Test
