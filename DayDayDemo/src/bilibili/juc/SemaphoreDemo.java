@@ -10,9 +10,9 @@ import java.util.concurrent.Semaphore;
 public class SemaphoreDemo {
     public static void main(String[] args) {
         // 模拟三个停车位
-        Semaphore semaphore = new Semaphore(3);
+        Semaphore semaphore = new Semaphore(5);
         // 模拟六部汽车
-        for (int i = 1; i <= 6; i++) {
+        for (int i = 1; i <= 10; i++) {
             new Thread(() -> {
                 try {
                     semaphore.acquire();
