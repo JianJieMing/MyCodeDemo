@@ -25,9 +25,75 @@ public class SingleLinkedListDemo {
         list.addByOrder(hero3);
         list.addByOrder(hero2);
         list.addByOrder(hero1);
-        list.addByOrder(hero3);
 
+        // 修改节点的代码
+//        list.list();
+//        HeroNode newHeroNode = new HeroNode(2, "小卢", "铁麒麟");
+//        list.update(newHeroNode);
+//        System.out.println("修改后的链表变化");
+//        list.list();
+
+        // 删除节点的代码
+//        list.list();
+//        HeroNode delHeroNode = new HeroNode(4, "林冲", "豹子头");
+//        list.delete(delHeroNode);
+//        System.out.println("删除后的链表变化");
         list.list();
+
+        // 获取单链表有效节点的个数
+//        System.out.println("有效的节点个数: " + getLength(list.getHead()));
+
+        // 查找单链表中的倒数第n个节点
+        HeroNode lastIndexNode = findLastIndexNode(list.getHead(), 4);
+        System.out.println("倒数第4个是: " + lastIndexNode);
+    }
+
+    /**
+     * 获取单链表节点的个数(如果是带头节点的链表,不统计头节点)
+     *
+     * @param head 链表的头节点
+     * @return 返回有效节点的个数
+     */
+    public static int getLength(HeroNode head) {
+        if (head.next == null) {
+            return 0;
+        }
+        int length = 0;
+        // 没有统计头节点
+        HeroNode cur = head.next;
+        while (cur != null) {
+            length++;
+            cur = cur.next; // 遍历
+        }
+        return length;
+    }
+
+    /**
+     * 查找单链表中的倒数第n个节点
+     * 思路:
+     * 1.编写一个方法,接收head节点,同时接收一个index
+     * 2.index 表示是倒数第index个节点
+     * 3.先把链表从头到尾遍历,得到链表的总长度getLength()
+     * 4.得到size后,从链表的第一个开始遍历(size-index)个,就可以得到
+     *
+     * @param head
+     * @param index
+     * @return
+     */
+    public static HeroNode findLastIndexNode(HeroNode head, int index) {
+        if (head.next == null) {
+            return null;
+        }
+        int size = getLength(head);
+        // 遍历size-index位置, 就是我们倒数第n个节点
+        if (index <= 0 || index > size) {
+            return null;
+        }
+        HeroNode temp = head.next;
+        for (int i = 0; i < size - index; i++) {
+            temp = temp.next;
+        }
+        return temp;
     }
 }
 
@@ -35,6 +101,10 @@ public class SingleLinkedListDemo {
 class SingleLinkedList {
     // 先初始化一个头节点,头节点不要动,不存放具体数据
     private HeroNode head = new HeroNode(0, "", "");
+
+    public HeroNode getHead() {
+        return head;
+    }
 
     /**
      * 添加节点到单向链表
@@ -93,6 +163,75 @@ class SingleLinkedList {
     }
 
     /**
+     * 修改节点的信息,根据no编号来修改,即no编号不能改
+     * 说明:
+     * 1. 根据newHeroNode的no来修改即可
+     *
+     * @param newHeroNode
+     */
+    public void update(HeroNode newHeroNode) {
+        if (head.next == null) {
+            System.out.println("链表为空");
+            return;
+        }
+        // 找到需要修改的这个节点, 根据no编号
+        // 定义一个辅助变量
+        HeroNode temp = head.next;
+        boolean flag = false; // 表示是否找到该节点
+        while (true) {
+            if (temp == null) {
+                break; // 已经遍历完链表了
+            }
+            if (temp.no == newHeroNode.no) {
+                // 找到了
+                flag = true;
+                break;
+            }
+            temp = temp.next;
+        }
+        // 根据flag判断是否找到要修改的节点
+        if (flag) {
+            temp.name = newHeroNode.name;
+            temp.nickName = newHeroNode.nickName;
+        } else { // 没有找到
+            System.out.printf("没有找到编号: %d 的节点,不能修改", newHeroNode.no);
+        }
+    }
+
+    /**
+     * 删除节点
+     * 思路:
+     * 1.先找到需要删除的这个节点的前一个节点
+     * 2.使前一个节点的next 指向 前一个节点.next.next
+     * 3.被删除的节点,将不会被其他引用指向,会被垃圾回收机制回收
+     *
+     * @param delHeroNode
+     */
+    public void delete(HeroNode delHeroNode) {
+        HeroNode temp = head;
+        if (temp == null) {
+            System.out.println("链表为空");
+            return;
+        }
+        boolean flag = false;
+        while (true) {
+            if (temp.next == null) {
+                break;
+            }
+            if (temp.next.no == delHeroNode.no) {
+                flag = true;
+                break;
+            }
+            temp = temp.next;
+        }
+        if (flag) {
+            temp.next = temp.next.next;
+        } else {
+            System.out.printf("没有找到编号: %d 的节点,不能删除", delHeroNode.no);
+        }
+    }
+
+    /**
      * 显示链表(遍历)
      */
     public void list() {
@@ -114,6 +253,7 @@ class SingleLinkedList {
             temp = temp.next;
         }
     }
+
 }
 
 // 定义一个HeroNode, 每个HeroNode对象就是一个节点
