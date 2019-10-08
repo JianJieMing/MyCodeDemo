@@ -269,7 +269,7 @@ class SingleLinkedList {
      */
     public void delete(HeroNode delHeroNode) {
         HeroNode temp = head;
-        if (temp == null) {
+        if (temp.next == null) {
             System.out.println("链表为空");
             return;
         }
