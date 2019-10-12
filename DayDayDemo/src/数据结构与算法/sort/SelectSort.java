@@ -13,7 +13,7 @@ public class SelectSort {
     public static void main(String[] args) {
         int[] arr = {101, 34, 119, 1, 64, 412, 10};
         selectSort(arr);
-        System.out.println(Arrays.toString(arr));
+//        System.out.println(Arrays.toString(arr));
     }
 
     public static void selectSort(int[] arr) {
@@ -33,8 +33,8 @@ public class SelectSort {
                 arr[minIndex] = arr[j];
                 arr[j] = min;
             }
-//            System.out.println("第" + (j + 1) + "轮后: ");
-//            System.out.println(Arrays.toString(arr));
+            System.out.println("第" + (j + 1) + "轮后: ");
+            System.out.println(Arrays.toString(arr));
         }
     }
 }
