@@ -1,13 +1,12 @@
-package 数据结构与算法.sort;
+package datastructure.sort;
 
 import java.util.Arrays;
 
 /**
  * 冒号排序
  *
- * @Classname BubbleSort
- * @Date 2019/10/11 14:24
- * @Created by jianjieming
+ * @author JianJieMing
+ * @date 2019/10/11 14:24
  */
 public class BubbleSort {
     public static void main(String[] args) {
